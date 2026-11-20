@@ -1,0 +1,29 @@
+# dsh-no-account bundle patch.
+#
+# Disables three rows of the official bundles by id. Each entry repeats the row's
+# package name: if upstream ever points the id at another package, the loader
+# warns "name mismatch" and skips the entry instead of disabling the wrong row.
+#
+# Never targeted here (DSH depends on them):
+#   deepseek-account  - core `deepseekAccount` service; the Electron shell reads
+#                       account/getState at startup and fails without it
+#   credentials, authorization, product-analytics, every other provider row
+#
+# This package registers no service and runs no code.
+
+# Sidebar account launcher, account menu, profile/balance page, sign-in dialog,
+# quota notice and desktop onboarding. The sidebar falls back to the plain
+# Settings button.
+- id: ui-settings-account
+  name: '@deepseek-ai/dsh-client-ui-settings-account'
+  disabled: true
+
+# Account notifications shown inside the account menu.
+- id: ui-account-notifications
+  name: '@deepseek-ai/dsh-client-ui-account-notifications'
+  disabled: true
+
+# The "DeepSeek Account" model provider. Choose another default model first.
+- id: llm-deepseek-account
+  name: '@deepseek-ai/dsh-llm-deepseek-account'
+  disabled: true

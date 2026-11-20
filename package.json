@@ -1,0 +1,32 @@
+{
+  "name": "dsh-no-account",
+  "version": "0.1.0",
+  "description": "Hide the native DeepSeek account UI and the DeepSeek Account model provider in DeepSeek Harness while keeping the core account service running",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "dsh",
+    "deepseek",
+    "no-account"
+  ],
+  "files": [
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=22.18",
+    "dsh": "0.2.2-rc.3 || 0.2.2-rc.5"
+  },
+  "scripts": {
+    "check": "node scripts/check-compat.ts"
+  }
+}
